@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="meteor packages" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/packages" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/packages" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

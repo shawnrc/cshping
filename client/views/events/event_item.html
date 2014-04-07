@@ -1,0 +1,17 @@
+<!--
+    Template for events, eventItem
+
+    author: Shawn Chowdhury
+    date: 2014-04-04
+-->
+
+<template name="eventItem">
+    <div class="post">
+        <div class="post-content">
+            <h3>{{author}} is {{action}}. <span>{{diff}} ago.</span></h3>
+        </div>
+        <div>
+            {{#if ownPost}}<a class="btn btn-danger delete discuss" href="#">Delete D:</a>{{/if}}
+        </div>
+    </div>
+</template>

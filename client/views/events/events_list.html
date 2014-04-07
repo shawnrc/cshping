@@ -1,0 +1,19 @@
+<!--
+    Template for the main list of events
+
+    author: shawn chowdhury
+    date: 2014-04-05
+-->
+
+<template name="eventsList">
+    <div class="container">
+        {{#if logged}}
+            {{> eventSubmit}}
+        {{/if}}
+    </div>
+    <div class="posts">
+        {{#each stuff}}
+            {{> eventItem}}
+        {{/each}}
+    </div>
+</template>

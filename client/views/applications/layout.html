@@ -1,0 +1,25 @@
+<!--
+    Layout template
+
+    path: client/views/applications/layout.html
+    language: html/handlebars (maybe blaze?)
+    author: Shawn Chowdhury
+    date: 2014-04-03
+-->
+
+<template name="layout">
+    <div class="container">
+
+        <!-- insert the header template here -->
+        {{> header}}
+
+        <!-- any errors here -->
+        {{> errors}}
+
+        <div id="main" class="row-fluid">
+            <!-- display yield from routed template -->
+            {{> yield}}
+        </div>
+
+    </div>
+</template>

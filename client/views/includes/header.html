@@ -1,0 +1,39 @@
+<!--
+    The header template, 'header'
+
+    Uses a lot of bootstrap CSS classes I don't know off the top of my head yet.
+    Is this what a web developer has to memorize? Jesus.
+
+    So there's like an inner and and outer navbar? There are also buttons for
+    the account stuff, as well as a dropdown. I don't quite understand the usage
+    of spans and stuff here. Perhaps I'll figure it out as I go along.
+
+
+    path: client/views/includes/header.html
+    language: html/handlebars (maybe blaze?)
+    author: Shawn Chowdhury
+    date: 2014-04-03
+-->
+
+<template name="header">
+    <header class="navbar">
+        <div class="navbar-inner">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+
+            <!-- link back to home -->
+            <a class="brand" href="{{pathFor 'eventsList'}}">CSH Ping</a>
+
+            <!-- login dropdown -->
+            <div class="nav-collapse collapse">
+                <ul class="nav pull-right">
+                    <!-- loginButtons from accounts-ui-bootstrap-dropdown -->
+                    <li>{{> loginButtons}}</li>
+                </ul>
+            </div>
+        </div>
+    </header>
+</template>
