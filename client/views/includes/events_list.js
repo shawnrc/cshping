@@ -18,3 +18,4 @@ Template.eventsList.helpers({
     }
 
 });
+

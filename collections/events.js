@@ -7,12 +7,12 @@
 
 Events = new Meteor.Collection('events');
 
-Events.allow({
-    remove: ownsDocument
-});
+//Events.allow({
+//    remove: ownsDocument
+//});
 
 Meteor.methods({
-    post: function(eventAttributes) {
+    push: function(eventAttributes) {
         var user = Meteor.user();
 
         // check if user is logged in
@@ -22,15 +22,19 @@ Meteor.methods({
         }
 
         // ensure the event has an action
-        if (!eventAttributes.action){
-            throw new Meteor.Error(422, 'Please specify an action!');
+        if (eventAttributes.action === ""){
+            throw new Meteor.Error(422, 'You didn\'t enter anything!');
         }
 
         // pick out the keys to add
-        var post = _.extend(_.pick(eventAttributes, 'author', 'action', 'date'), {
+        var event = _.extend(_.pick(eventAttributes, 'author', 'action', 'date'), {
             author: user.username,
             action: eventAttributes.action,
-            submitted: new Date.getTime()
+            submitted: new Date().getTime()
         });
+
+        var postId = Events.insert(event);
+
+        return postId;
     }
 });

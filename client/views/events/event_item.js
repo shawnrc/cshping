@@ -17,14 +17,14 @@ Template.eventItem.helpers({
 
     diff: function () {
         var delta = new Date().getTime() - this.date;
-        if (delta < 10000) {
+        if (delta < 100000) {
             return Math.round(delta / 1000) + ' seconds';
 
-        } else if (delta >= 100000 && delta < 36000000) {
+        } else if (delta >= 100000 && delta < 3600000) {
             return Math.round(delta / 1000 / 60) + ' minutes';
 
-        } else if (delta >= 36000000 && delta < 2160000000) {
-            return Math.round(delta / 1000 / 360) + ' hours';
+        } else if (delta >= 3600000 && delta < 86400000) {
+            return Math.round(delta / 1000 / 60 / 60) + ' hours';
 
         } else {
             return 'a long time';
@@ -57,3 +57,9 @@ Template.eventItem.events({
 
 });
 
+Template.eventItem.rendered = function() {
+    var $item = $(this.find('.eventItem'));
+    Meteor.defer(function() {
+        $item.removeClass('loading');
+    });
+}

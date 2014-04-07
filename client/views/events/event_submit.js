@@ -12,3 +12,25 @@ Template.eventSubmit.helpers({
         }
     }
 });
+
+Template.eventSubmit.events({
+
+    'submit form': function(event) {
+        event.preventDefault();
+
+        var event = {
+            author: Meteor.user().username,
+            action: $(event.target).find('[name=action]').val(),
+            date: new Date().getTime()
+        };
+
+        Meteor.call('push', event, function(error) {
+            if (error) {
+                throwError(error.reason);
+
+            } else {
+                Router.go('eventsList');
+            }
+        });
+    }
+});
