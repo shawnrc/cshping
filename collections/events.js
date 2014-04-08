@@ -37,7 +37,6 @@ Meteor.methods({
         // check if the user has posted recently
         if (Events.find({owner: Meteor.userId()}).count() > 0) {
             if (event.submitted <= Events.findOne({owner: Meteor.userId()}).submitted + 600000) {
-                console.log('pooooooooop');
                 throw new Meteor.Error(429, 'You just created an event! Try again in a bit.');
             }
         }
