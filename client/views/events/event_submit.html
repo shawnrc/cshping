@@ -6,12 +6,11 @@
 -->
 
 <template name="eventSubmit">
-    <form class="main">
+    <form class="main" id="pust">
 
-        <div class="control-group">
-            {{cuser}} is... <input name="action" type="text" value="" placeholder="What are you up to?" />
-            <input type="submit" value="Submit" class="btn btn-primary" />
-        </div>
+        <label for="action">{{cuser}} is...</label>
+        <input name="action" type="text" value="" placeholder="What are you up to?" />
+        <input type="submit" value="Submit" class="btn btn-primary" />
 
     </form>
 </template>

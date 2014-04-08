@@ -29,6 +29,7 @@ Template.eventSubmit.events({
                 throwError(error.reason);
 
             } else {
+                $('#pust').trigger("reset");
                 Router.go('eventsList');
             }
         });

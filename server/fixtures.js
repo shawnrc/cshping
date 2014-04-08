@@ -5,7 +5,7 @@
  *
  */
 
-if (Events.find().count() === 0) {
+var pop = function() {
 
     Events.insert({
         author: 'Shawn',

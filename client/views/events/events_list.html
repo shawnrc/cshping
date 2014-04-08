@@ -14,6 +14,17 @@
     <div class="posts">
         {{#each stuff}}
             {{> eventItem}}
+        {{else}}
+        <div class="well well-lg">
+            <div class="col-md-4 jumbotron">
+                <h1>Hello, world!</h1>
+                {{#if logged}}
+                    <p>Make an account and be the first to Ping!</p>
+                {{else}}
+                    <p>You've got an account, so start Pinging!</p>
+                {{/if}}
+            </div>
+        </div>
         {{/each}}
     </div>
 </template>
