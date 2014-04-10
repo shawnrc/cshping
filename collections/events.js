@@ -7,9 +7,11 @@
 
 Events = new Meteor.Collection('events');
 
+// permissions
 //Events.allow({
 //    remove: ownsDocument
 //});
+
 
 Meteor.methods({
     push: function(eventAttributes) {
@@ -39,8 +41,8 @@ Meteor.methods({
         });         
 
         // check if the user has posted recently
-        if (Events.find({owner: Meteor.userId()}).count() > 0) {
-            if (new Date().getTime() < Events.findOne({owner: Meteor.userId()}).date + 5000000) {
+        if (Events.findOne({author: Meteor.user().username}) !== null) {
+            if (new Date().getTime() < Events.findOne({owner: Meteor.userId()}).date + 60000) {
                 throw new Meteor.Error(429, 'You just created an event! Try again in a bit.');
             }
         }

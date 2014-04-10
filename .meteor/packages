@@ -11,3 +11,5 @@ accounts-ui-bootstrap-dropdown
 bootstrap
 accounts-password
 blaze-layout
+email
+accounts-base

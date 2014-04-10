@@ -1,0 +1,33 @@
+<!-- 
+	Accounts templates
+-->
+
+<template name="login">
+	<form id="login-form" action="action">
+		<div>
+			<input type="text" id="login-username" />
+			<input type="password" id="login-password" />
+			<input type="submit" id="login-button" value="Login" />			
+		</div>
+	</form>
+</template>
+
+
+
+<template name="register">
+	<form id="register-form" action="action">
+		<div>
+			<input type="text" id="account-username" />
+			<input type="tel"  id="account-phone"    />
+			<select id="carrier">
+				<option value="att">AT&amp;T</option>
+				<option value="vzw">Verizon</option>
+				<option value="tmo">T-Mobile</option>
+				<option value="snc">Sprint</option>
+			</select>
+			<input type="password" id="account-password" />
+			<input type="password" id="password-validate" />
+			<input type="submit" id="create-account" value="Create Account" />			
+		</div>
+	</form>
+</template>
