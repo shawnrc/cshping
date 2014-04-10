@@ -32,19 +32,23 @@ Meteor.methods({
             throw new Meteor.Error(422, 'You didn\'t enter anything!');
         }
 
+		tstamp = new Date().getTime();
+
         // pick out the keys to add
         var event = _.extend(_.pick(eventAttributes, 'author', 'action', 'date'), {
             author: user.username,
             action: eventAttributes.action,
-            //submitted: new Date().getTime(),
+            date: tstamp,
             owner: Meteor.userId()
-        });         
+        });       
+        
 
         // check if the user has posted recently
-        if (Events.findOne({author: Meteor.user().username}) !== null) {
-            if (new Date().getTime() < Events.findOne({owner: Meteor.userId()}).date + 60000) {
-                throw new Meteor.Error(429, 'You just created an event! Try again in a bit.');
-            }
+        if (Events.findOne({owner: Meteor.userId()})) {
+            if (event.date < ( Events.findOne({owner: Meteor.userId()}).date + 120000)) {
+				throw new Meteor.Error(429, 'You just created an event! Try again in a bit.');
+            	return -1;                
+            } 
         }
 
         var postId = Events.insert(event);

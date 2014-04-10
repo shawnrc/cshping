@@ -23,3 +23,15 @@ Template.login.events({
 	}
 	
 });
+
+Template.register.events({
+	'submit #register-form': function(event, form) {
+		
+		event.preventDefault();
+		
+		var username = form.find('#account-email').value;
+		var password = form.find('#account-password').value;
+		var passvald = form.find('#password-validate').value;
+		var cellnum  = form.find('#')
+	}
+})
