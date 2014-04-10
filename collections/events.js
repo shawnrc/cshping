@@ -25,18 +25,22 @@ Meteor.methods({
         if (eventAttributes.action === ""){
             throw new Meteor.Error(422, 'You didn\'t enter anything!');
         }
+        
+        if (!eventAttributes.action){
+            throw new Meteor.Error(422, 'You didn\'t enter anything!');
+        }
 
         // pick out the keys to add
         var event = _.extend(_.pick(eventAttributes, 'author', 'action', 'date'), {
             author: user.username,
             action: eventAttributes.action,
-            submitted: new Date().getTime(),
+            //submitted: new Date().getTime(),
             owner: Meteor.userId()
         });         
 
         // check if the user has posted recently
         if (Events.find({owner: Meteor.userId()}).count() > 0) {
-            if (event.submitted <= Events.findOne({owner: Meteor.userId()}).submitted + 600000) {
+            if (new Date().getTime() < Events.findOne({owner: Meteor.userId()}).date + 5000000) {
                 throw new Meteor.Error(429, 'You just created an event! Try again in a bit.');
             }
         }
